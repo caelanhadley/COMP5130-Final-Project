@@ -36,7 +36,7 @@ class Item():
     def __init__(self, name_in):
         self.name = name_in
 
-class Item_list():
+class ItemList():
     items = []
 
     def __init__(self):
