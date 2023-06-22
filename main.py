@@ -14,7 +14,7 @@ def load_csv(filename):
 Dataset Parser
 '''
 def parse_data(data):
-    item_list = Item_list()
+    item_list = ItemList()
 
     for recipt in data:
         for item in recipt:
