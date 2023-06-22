@@ -1,11 +1,11 @@
-import csv
+import csv, os
 
 '''
 CSV Loader
     Loads a CSV file from /datasets as a string
 '''
 def load_csv(filename):
-    with open(filename, 'r') as file:
+    with open(os.path.join("datasets", filename), 'r') as file:
         reader = csv.reader(file)
         return list(reader)
 
