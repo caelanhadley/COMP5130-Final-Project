@@ -2,7 +2,9 @@ import csv, os
 
 '''
 CSV Loader
-    Loads a CSV file from /datasets as a string
+    Gets contents of a CSV file.
+    @filename The name of a dataset file in /datasets/
+    @return A list of the CSV's contents
 '''
 def load_csv(filename):
     with open(os.path.join("datasets", filename), 'r') as file:
@@ -28,7 +30,11 @@ Main Loop
 def main(filename):
     parse_data(load_csv(filename))
 
-
+'''
+Item class
+    @name The name of the item.
+    @count The amount of this item.
+'''
 class Item():
     name = ""
     count = 1
@@ -36,6 +42,10 @@ class Item():
     def __init__(self, name_in):
         self.name = name_in
 
+'''
+ItemList
+    @items A list of Item objects.
+'''
 class ItemList():
     items = []
 
