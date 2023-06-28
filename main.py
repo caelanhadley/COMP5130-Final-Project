@@ -3,10 +3,12 @@ from apriori_python import apriori
 
 '''
 CSV Loader
-    Loads a CSV file from /datasets as a string
+    Gets contents of a CSV file.
+    @filename The name of a dataset file in /datasets/
+    @return A list of the CSV's contents
 '''
 def load_csv(filename):
-    with open(filename, 'r') as file:
+    with open(os.path.join("datasets", filename), 'r') as file:
         reader = csv.reader(file)
         return list(reader)
 
@@ -15,7 +17,7 @@ def load_csv(filename):
 Dataset Parser
 '''
 def parse_data(data):
-    item_list = Item_list()
+    item_list = ItemList()
 
     for recipt in data:
         for item in recipt:
@@ -37,7 +39,11 @@ class Item():
     def __init__(self, name_in):
         self.name = name_in
 
-class Item_list():
+'''
+ItemList
+    @items A list of Item objects.
+'''
+class ItemList():
     items = []
 
     def __init__(self):
