@@ -1,4 +1,5 @@
-import csv
+import csv, time
+from apriori_python import apriori
 
 '''
 CSV Loader
@@ -26,8 +27,8 @@ def parse_data(data):
 Main Loop
 '''
 def main(filename):
-    parse_data(load_csv(filename))
-
+    itemsets, rules = apriori(load_csv(filename), minSup=0.5, minConf=0.5) # Do timer on apriori functions within func call
+    print(rules)
 
 class Item():
     name = ""
