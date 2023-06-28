@@ -1,4 +1,4 @@
-import csv, time
+import csv, time, os
 from apriori_python import apriori
 
 '''
@@ -12,55 +12,12 @@ def load_csv(filename):
         reader = csv.reader(file)
         return list(reader)
 
-
-'''
-Dataset Parser
-'''
-def parse_data(data):
-    item_list = ItemList()
-
-    for recipt in data:
-        for item in recipt:
-            if item_list.exists(item) == False:
-                item_list.add(Item(item))
-            
-
 '''
 Main Loop
 '''
 def main(filename):
     itemsets, rules = apriori(load_csv(filename), minSup=0.5, minConf=0.5) # Do timer on apriori functions within func call
     print(rules)
-
-class Item():
-    name = ""
-    count = 1
-
-    def __init__(self, name_in):
-        self.name = name_in
-
-'''
-ItemList
-    @items A list of Item objects.
-'''
-class ItemList():
-    items = []
-
-    def __init__(self):
-        pass
-
-    def add(self, item_in):
-        self.items.append(item_in)
-
-    def exists(self, item_in):
-        if len(self.items) == 0:
-            return False
-
-        for item in self.items:
-            if item.name == item_in:
-                item.count += 1
-                return True
-        return False
 
 
 if __name__ == "__main__":
